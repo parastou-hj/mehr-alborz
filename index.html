@@ -53,88 +53,107 @@
 
                     </ul>
                     <img src="./images/search.png" alt="" class="search me-3">
-                   <div id="all-category" class="mega-menu">
-  <div class="pro-menu px-0">
-    <div class="pro-tabs">
-      <div class="p-tab" data-tab="sand-lab">
-        <div><span>تجهیزات آزمایشگاه ماسه</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-      <div class="p-tab" data-tab="dryers">
-        <div><span>خشک‌کن‌ها و کوره‌های الکتریکی</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-      <div class="p-tab" data-tab="metallography">
-        <div><span>تجهیزات آزمایشگاه متالوگرافی</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-      <div class="p-tab" data-tab="grinders">
-        <div><span>آسیاب‌ها و خردکن‌ها</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-      <div class="p-tab" data-tab="ceramic-lab">
-        <div><span>تجهیزات آزمایشگاه سرامیک</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-    </div>
+                  <div id="all-category" class="mega-menu">
+                <!-- Pro-Menu اصلی (بدون id) -->
+                <div class="pro-menu px-0">
+                    <div class="pro-tabs">
+                  
+                    <div class="p-tab" data-tab="sand-lab" data-submenu="#sand-lab-content">
+                        <div><span>تجهیزات آزمایشگاه ماسه</span></div>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    
+                    <div class="p-tab" data-tab="metallography">
+                        <div><span>تجهیزات آزمایشگاه متالوگرافی</span></div>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    
+                    <div class="p-tab" data-tab="grinders">
+                        <div><span>آسیاب‌ها و خردکن‌ها</span></div>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    
+                    <div class="p-tab" data-tab="ceramic-lab">
+                        <div><span>تجهیزات آزمایشگاه سرامیک</span></div>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    </div>
 
-    <div class="pro-contents">
-      <div class="p-content" id="sand-lab">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>همه تجهیزات آزمایشگاه ماسه</span></a>
-         <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
+                    <div class="pro-contents">
+                    <div class="p-content"></div>
+                    <div class="p-content" id="sand-lab">
+                        <a href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>همه تجهیزات آزمایشگاه ماسه</span>
+                        </a>
+                        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
+                    </div>
 
-      <div class="p-content" id="dryers">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>کوره‌ها و خشک‌کن‌های الکتریکی</span></a>
-        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
+                    <div class="p-content" id="metallography">
+                        <a href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>تجهیزات متالوگرافی</span>
+                        </a>
+                        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
+                    </div>
 
-      <div class="p-content" id="metallography">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>تجهیزات متالوگرافی</span></a>
-        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
+                    <div class="p-content" id="grinders">
+                        <a href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>آسیاب‌ها و خردکن‌ها</span>
+                        </a>
+                        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
+                    </div>
 
-      <div class="p-content" id="grinders">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>آسیاب‌ها و خردکن‌ها</span></a>
-         <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
+                    <div class="p-content" id="ceramic-lab">
+                        <a href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>تجهیزات آزمایشگاه سرامیک</span>
+                        </a>
+                        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="p-content" id="ceramic-lab">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>تجهیزات آزمایشگاه سرامیک</span></a>
-        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
-    </div>
-  </div>
-</div>
- <div id="sand-lab-content" class="mega-menu">
-  <div class="pro-menu px-0">
-    <div class="pro-tabs">
-      <div class="p-tab" data-tab="sand-density">
-        <div><span>دستگاه تراکم ماسه</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-      <div class="p-tab" data-tab="equipment">
-        <div><span>تجهیزات اندازه گیری</span></div>
-        <i class="fa-solid fa-chevron-left"></i>
-      </div>
-      
-    </div>
+                <!-- Pro-Menu فرعی برای sand-lab -->
+                <div id="sand-lab-content" class="pro-menu px-0">
+                   
+                    
+                    <div class="pro-tabs">
+                    <div class="p-tab" data-tab="sand-density">
+                        <div><span>دستگاه تراکم ماسه</span></div>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <div class="p-tab" data-tab="equipment">
+                        <div><span>تجهیزات اندازه گیری</span></div>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    </div>
 
-    <div class="pro-contents">
-      <div class="p-content" id="sand-density">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>همه تجهیزات آزمایشگاه ماسه</span></a>
-        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
+                    <div class="pro-contents">
+                         <!-- دکمه بازگشت -->
+                    <button class="submenu-back-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span>محصولات</span>
+                    </button>
+                    <div class="p-content" id="sand-density">
+                        <a href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>همه دستگاه‌های تراکم ماسه</span>
+                        </a>
+                        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
+                    </div>
 
-      <div class="p-content" id="equipment">
-        <a href="#"><i class="fa-solid fa-chevron-left"></i><span>کوره‌ها و خشک‌کن‌های الکتریکی</span></a>
-       <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
-      </div>
-
-      
-    </div>
-  </div>
-</div>
+                    <div class="p-content" id="equipment">
+                        <a href="#">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>کوره‌ها و خشک‌کن‌های الکتریکی</span>
+                        </a>
+                        <p>شامل تجهیزات آماده‌سازی نمونه، کوره‌های حرارتی، و ابزارهای کنترل کیفیت مواد سرامیکی می‌باشد.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
 
                   </div>
                     

@@ -1056,3 +1056,163 @@ ul{
 }
 
 
+/* استایل‌های کلی برای pro-menu */
+.mega-menu .pro-menu {
+    /* position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%; */
+    display: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mega-menu .pro-menu.active {
+    display: flex;
+}
+
+/* انیمیشن کشویی از راست به چپ (رفتن به submenu) */
+.mega-menu .pro-menu.slide-out {
+    animation: slideOutToRight 0.3s ease-in forwards;
+}
+
+/* انیمیشن کشویی از چپ به راست (بازگشت) */
+.mega-menu .pro-menu.slide-out-reverse {
+    animation: slideOutToLeft 0.3s ease-in forwards;
+}
+
+/* انیمیشن‌های keyframe */
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* دکمه بازگشت */
+.submenu-back-btn {
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    text-align: right;
+    font-family: iranyekanwebregularfanum;
+    font-size: 1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.submenu-back-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    transition: right 0.4s ease;
+}
+
+.submenu-back-btn:hover::before {
+    right: 100%;
+}
+
+.submenu-back-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    transform: translateX(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submenu-back-btn i {
+    margin-left: 12px;
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+.submenu-back-btn:hover i {
+    transform: translateX(3px);
+}
+
+.submenu-back-btn span {
+    font-size: 1em;
+}
+
+/* استایل برای تب‌هایی که submenu دارند */
+.p-tab[data-submenu] {
+    cursor: pointer;
+}
+
+.p-tab[data-submenu]::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.p-tab[data-submenu]:hover::after {
+    opacity: 0.5;
+}
+
+/* افکت ویژه برای تب‌های کلیکی */
+.p-tab[data-submenu]:active {
+    transform: translateX(8px) scale(0.98);
+}
+
+/* استایل برای pro-menu های فرعی */
+.pro-menu[id] {
+    background-color: #484848;
+}
+
+.pro-menu[id] .pro-tabs {
+    background-color: #3a3a3a;
+}
+
+/* افکت fade in برای محتوای جدید */
+.pro-menu.active .pro-tabs,
+.pro-menu.active .pro-contents {
+    animation: fadeIn 0.4s ease-in forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
