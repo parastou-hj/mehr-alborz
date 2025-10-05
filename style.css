@@ -96,7 +96,7 @@ ul{
 }
 .nav li a{
     color: #fff;
-    padding:0px 12px;
+    padding:10px 12px;
     
 }
 .nav-back{
@@ -459,39 +459,7 @@ ul{
             color: #000000;
             font-weight: bold;
         }
-        .fix-items{
-            position: fixed;
-            left: 10px;
-            bottom: 10px;
-            z-index: 10000;
-        }
-        .fix-items a{
-            display: block;
-          border: 3px solid hsl(0deg 0% 78.82%);
-          border-radius: 50%;
-          padding: 10px;
-          width: 60px;
-          height: 60px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #333;
-          margin: 10px 0px;
-        }
-        .fix-items a:hover{
-           
-             border: 3px solid var(--primary-color);
-            
-        }
-        .fix-items a img{
-             filter: brightness(0)
-        }
-        .fix-items span{
-        display: none;
-        }
-         .fix-items a:hover img{
-             filter: brightness(100%)
-        }
+        
         .fix-call{
             position: fixed;
             right: 10px;
@@ -652,7 +620,7 @@ ul{
     max-width: 95vw; 
     height: 500px; 
     z-index: 1001; 
-    background-color: #484848;
+      background-color:  var(--primary-color);
     box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
     border-top: 3px solid var(--primary-color);
     margin-top: -30px;
@@ -825,9 +793,9 @@ ul{
     height: 100%;
     max-height: 100%;
     overflow-y: auto;
-    padding-top: 25px;
+    padding: 25px;
     position: relative;
-    background-color: #333131;
+   
 
   
 
@@ -850,7 +818,7 @@ ul{
     display: none;
     position: relative;
     z-index: 2;
-    background: linear-gradient(135deg, var(--primary-color) 0%, hsl(0deg 98.71% 30.39%) 100%);
+    /* background-color: var(--primary-color); */
     height: 100%;
 
 }
@@ -1073,7 +1041,7 @@ ul{
 
 /* انیمیشن کشویی از راست به چپ (رفتن به submenu) */
 .mega-menu .pro-menu.slide-out {
-    animation: slideOutToRight 0.3s ease-in forwards;
+    /* animation: slideOutToRight 0.3s ease-in forwards; */
 }
 
 /* انیمیشن کشویی از چپ به راست (بازگشت) */
@@ -1122,6 +1090,7 @@ ul{
     font-size: 1em;
     position: relative;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .submenu-back-btn::before {
@@ -1190,11 +1159,11 @@ ul{
 
 /* استایل برای pro-menu های فرعی */
 .pro-menu[id] {
-    background-color: #484848;
+    /* background-color: #484848; */
 }
 
 .pro-menu[id] .pro-tabs {
-    background-color: #3a3a3a;
+    /* background-color: #3a3a3a; */
 }
 
 /* افکت fade in برای محتوای جدید */
@@ -1215,4 +1184,59 @@ ul{
         transform: translateY(0);
     }
 }
+
+.ToolsRight {
+       width: 60px;
+    height: 60px;
+    background: #fff;
+    margin-bottom: 5px;
+    position: relative;
+    box-shadow: 0 4px 10px #A0A0A0;
+    
+    display: block;
+    border-radius: 50%;
+    float: left;
+}
+.ToolsRight img {
+    float: left;
+ 
+}
+.ToolsRight span {
+       float: right;
+    display: none;
+    font-size: 8pt;
+    width: 80px;
+    margin-top: 9px;
+    color: gray;
+    position: relative;
+    top: -34px;
+    transition: all .3s ease ;
+  
+}
+.ToolsRight:hover {
+       width: 125px;
+    transition: all 0s 
+ease 0s;
+ border-radius: 25px;
+}
+.ToolsRight:hover span {
+   display: block;
+    transition: all 0s ease 0s;
+position: unset;
+}
+
+.fix-items{
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            z-index: 10000;
+            width: 60px;
+        }
+        
+ 
+
+
+
+
+
 

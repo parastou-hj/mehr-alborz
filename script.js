@@ -1,211 +1,16 @@
-$(document).ready(function(){
-    function resize(){   
-        var calculatePadding = parseInt($('header').css("height"));
-        
-            $(".body-content").css({
-                "padding-top": calculatePadding + "px"
-            });
-        
-    }
-
-    resize(); 
-    $(window).resize(function(){ 
-        resize();
-    });
-});
-
-  $(".brand-owl").owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        rtl: true,
-        nav: false,
-        dots: false
-    });
-
-
-
-    class CounterAnimation {
-    constructor() {
-        this.percentSection = document.querySelector('.percent-sec');
-        this.hasAnimated = false;
-        this.counterItems = this.percentSection ? this.percentSection.querySelectorAll('.percent-item span') : [];
-        this.init();
-    }
-    
-    init() {
-        if (!this.percentSection || this.counterItems.length === 0) return;
-        
-        this.setupObserver();
-        window.addEventListener('scroll', () => this.checkScroll());
-    }
-    
-    setupObserver() {
-        if (window.IntersectionObserver) {
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -20% 0px',
-                threshold: 0.3
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !this.hasAnimated) {
-                        this.startAnimation();
-                        this.hasAnimated = true;
-                    }
-                });
-            }, observerOptions);
-            
-            observer.observe(this.percentSection);
-        }
-    }
-    
-    checkScroll() {
-        if (this.hasAnimated || !this.percentSection) return;
-        
-        const rect = this.percentSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        
-        if (rect.top <= windowHeight * 0.8 && rect.bottom >= windowHeight * 0.2) {
-            this.startAnimation();
-            this.hasAnimated = true;
-        }
-    }
-    
-
-      //count one by one
-    startAnimation() {
-        Array.from(this.counterItems).forEach((item, index) => {
-            setTimeout(() => {
-                this.animateCounter(item);
-            }, index * 200);
-        });
-    }
-
-    //count all in once
-//       startAnimation() {
-//        Array.from(this.counterItems).forEach((item) => {
-//     this.animateCounter(item);
-// });
-//     }
-    
-    animateCounter(element) {
-        const fullText = element.textContent;
-        const matches = fullText.match(/(\d+)([^0-9]*)/);
-        
-        if (!matches) return;
-        
-        const target = parseInt(matches[1]); 
-        const suffix = matches[2] || '';
-        
-        const duration = 1500;
-        const frameRate = 16;
-        const totalFrames = duration / frameRate;
-        
-        let currentFrame = 0;
-        let currentValue = 1; 
-        
-        const timer = setInterval(() => {
-            currentFrame++;
-            const progress = currentFrame / totalFrames;
-            const easedProgress = this.easeOutExpo(progress);
-            currentValue = Math.round(1 + (easedProgress * (target - 1)));
-            
-            if (currentFrame >= totalFrames) {
-                currentValue = target;
-            }
-            
-            element.textContent = currentValue + suffix;
-            
-            if (currentFrame >= totalFrames) {
-                clearInterval(timer);
-                element.style.transition = 'transform 0.3s ease';
-                element.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    element.style.transform = 'scale(1)';
-                }, 300);
-            }
-        }, frameRate);
-    }
-    
-    easeOutExpo(t) {
-        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    new CounterAnimation();
-});
-
-  function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-$(document).ready(function() {
-    const initializeOwlCarousel = () => {
-        const advantagesContainer=$('.brands-items')
-        if (window.innerWidth > 768) {
-            if (typeof advantagesContainer.data('owl.carousel') != 'undefined') {
-                advantagesContainer.data('owl.carousel').destroy();
-              }
-              advantagesContainer.removeClass('owl-carousel');
-            
-        } else if(window.innerWidth <= 768) {
-            if (!$('.brands-items').hasClass('owl-carousel')) {
-                $('.brands-items').addClass('owl-carousel').owlCarousel({
-                    rtl: true,
-                    items: 1,
-                    dots: true,
-                    loop: true,
-                    // autoplay: true,
-                    // autoplayTimeout: 3000,
-                    // autoplayHoverPause: true,
-                    responsive: {
-                        0: {
-                            items: 3
-                        },
-                        576: {
-                            items: 4
-                        },
-                        768: {
-                            items: 5
-                        },
-                        1200: {
-                            items: 6
-                        },
-                        
-                    }
-                });
-            }
-        }
-    };
-
-    initializeOwlCarousel();
-    $(window).resize(initializeOwlCarousel);
-
-  
-});
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const megaMenuTriggers = document.querySelectorAll('.has-megamenu');
     const allMegaMenus = document.querySelectorAll('.mega-menu');
     let hoverTimeout = null;
     let activeMenu = null;
     let activeTriggerLi = null;
+    let menuHistory = []; // تاریخچه منوها برای navigation
 
     const closeAllMegaMenus = (immediately = false) => {
         allMegaMenus.forEach(menu => {
             if (menu.classList.contains('active')) {
                 menu.classList.remove('active');
             }
-            // ریست کردن همه pro-menu ها
             const allProMenus = menu.querySelectorAll('.pro-menu');
             allProMenus.forEach(pm => {
                 pm.classList.remove('active', 'slide-out');
@@ -216,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         activeMenu = null;
         activeTriggerLi = null;
+        menuHistory = []; // ریست کردن تاریخچه
         if (hoverTimeout && !immediately) {
             clearTimeout(hoverTimeout);
             hoverTimeout = null;
@@ -225,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const activateFirstTab = (menu) => {
         if (!menu) return;
         
-        // فقط برای pro-menu اصلی (اولین pro-menu)
         const mainProMenu = menu.querySelector('.pro-menu:not([id])');
         if (!mainProMenu) return;
 
@@ -246,27 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // اطمینان از اینکه فقط pro-menu اصلی فعال است
         mainProMenu.classList.add('active');
+        menuHistory = [mainProMenu]; // شروع تاریخچه با منوی اصلی
     };
 
-    // تابع برای نمایش submenu (pro-menu فرعی)
     const showSubProMenu = (subMenuId, parentMegaMenu) => {
         const currentProMenu = parentMegaMenu.querySelector('.pro-menu.active');
         const subProMenu = parentMegaMenu.querySelector(subMenuId);
 
         if (!subProMenu || !currentProMenu) return;
 
-        // اضافه کردن کلاس slide-out به منوی فعلی
+        // اضافه کردن منوی فعلی به تاریخچه قبل از رفتن به زیرمنو
+        if (!menuHistory.includes(currentProMenu)) {
+            menuHistory.push(currentProMenu);
+        }
+
         currentProMenu.classList.add('slide-out');
 
         setTimeout(() => {
             currentProMenu.classList.remove('active');
             
-            // فعال کردن منوی فرعی
             subProMenu.classList.add('active');
             
-            // فعال کردن اولین تب منوی فرعی
             const subTabs = subProMenu.querySelectorAll('.pro-tabs > .p-tab');
             const subContents = subProMenu.querySelectorAll('.pro-contents > .p-content');
             
@@ -284,26 +90,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // حذف کلاس slide-out بعد از اتمام انیمیشن
             setTimeout(() => {
                 currentProMenu.classList.remove('slide-out');
             }, 50);
         }, 300);
     };
 
-    // تابع برای بازگشت به منوی اصلی
-    const goBackToMainMenu = (parentMegaMenu) => {
+    const goBackToPreviousMenu = (parentMegaMenu) => {
         const currentProMenu = parentMegaMenu.querySelector('.pro-menu.active');
-        const mainProMenu = parentMegaMenu.querySelector('.pro-menu:not([id])');
+        
+        // اگر تاریخچه خالی است یا فقط یک منو دارد، به منوی اصلی برگرد
+        if (menuHistory.length <= 1) {
+            const mainProMenu = parentMegaMenu.querySelector('.pro-menu:not([id])');
+            if (!currentProMenu || !mainProMenu || currentProMenu === mainProMenu) return;
 
-        if (!currentProMenu || !mainProMenu || currentProMenu === mainProMenu) return;
+            currentProMenu.classList.add('slide-out-reverse');
 
-        // اضافه کردن کلاس slide-out-reverse
+            setTimeout(() => {
+                currentProMenu.classList.remove('active');
+                mainProMenu.classList.add('active');
+
+                setTimeout(() => {
+                    currentProMenu.classList.remove('slide-out-reverse');
+                }, 50);
+            }, 300);
+            return;
+        }
+
+        // برگشت به منوی قبلی در تاریخچه
+        const previousMenu = menuHistory[menuHistory.length - 1];
+        
+        if (!currentProMenu || !previousMenu || currentProMenu === previousMenu) return;
+
         currentProMenu.classList.add('slide-out-reverse');
 
         setTimeout(() => {
             currentProMenu.classList.remove('active');
-            mainProMenu.classList.add('active');
+            previousMenu.classList.add('active');
+            
+            // حذف آخرین منو از تاریخچه
+            menuHistory.pop();
 
             setTimeout(() => {
                 currentProMenu.classList.remove('slide-out-reverse');
@@ -311,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     };
 
-    // منوهای اصلی (trigger های mega menu)
     megaMenuTriggers.forEach(triggerLi => {
         const targetMenuId = triggerLi.getAttribute('data-megamenu-target');
         const targetSelector = targetMenuId.startsWith('#') ? targetMenuId : `#${targetMenuId}`;
@@ -352,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // مدیریت منوها
     allMegaMenus.forEach(menu => {
         menu.addEventListener('mouseenter', () => {
             if (hoverTimeout) {
@@ -370,13 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 250);
         });
 
-        // دکمه‌های بازگشت
         const backButtons = menu.querySelectorAll('.submenu-back-btn');
         backButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                goBackToMainMenu(menu);
+                goBackToPreviousMenu(menu);
             });
         });
 
@@ -386,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const megaMenuTabs = mainProMenu.querySelectorAll('.pro-tabs > .p-tab');
             
             megaMenuTabs.forEach(tab => {
-                // برای تب‌هایی که submenu دارند - با کلیک
                 if (tab.hasAttribute('data-submenu')) {
                     tab.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -396,10 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
                 
-                // hover برای تب‌های عادی
                 tab.addEventListener('mouseenter', function() {
                     if (!menu.classList.contains('active')) return;
-                    if (this.hasAttribute('data-submenu')) return; // skip submenu tabs on hover
 
                     const tabTargetId = this.getAttribute('data-tab');
                     const tabTargetContent = mainProMenu.querySelector(`.pro-contents > #${tabTargetId}`);
@@ -424,6 +244,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const subTabs = subMenu.querySelectorAll('.pro-tabs > .p-tab');
             
             subTabs.forEach(tab => {
+                if (tab.hasAttribute('data-submenu')) {
+                    tab.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const subMenuId = this.getAttribute('data-submenu');
+                        showSubProMenu(subMenuId, menu);
+                    });
+                }
+                
                 tab.addEventListener('mouseenter', function() {
                     if (!subMenu.classList.contains('active')) return;
 
