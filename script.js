@@ -241,7 +241,7 @@ $(document).ready(function() {
             const targetMenuId = triggerLi.getAttribute('data-megamenu-target');
             const targetSelector = targetMenuId.startsWith('#') ? targetMenuId : `#${targetMenuId}`;
             // Important: Search for the menu within the nav context if placed inside
-            const targetMenu = triggerLi.closest('.nav').querySelector(targetSelector);
+            const targetMenu = triggerLi.closest('.nav-sec').querySelector(targetSelector);
              // If menus are outside nav, use: document.querySelector(targetSelector);
 
             if (!targetMenu) {
@@ -260,13 +260,13 @@ $(document).ready(function() {
                 }
 
                 if (!targetMenu.classList.contains('active')) {
-                    closeAllMegaMenus(true); // Ensure others are closed
+                    closeAllMegaMenus(true); 
 
                     activeMenu = targetMenu;
-                    activeTriggerLi = this; // Keep track of the trigger
+                    activeTriggerLi = this; 
                     activateFirstTab(activeMenu);
                     activeMenu.classList.add('active');
-                    activeTriggerLi.classList.add('active-trigger'); // Add style to trigger
+                    activeTriggerLi.classList.add('active-trigger'); 
                 }
             });
 
