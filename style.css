@@ -164,6 +164,17 @@ ul{
             color: #1a2530;
             font-weight: 500;
         }
+        .baner-top img{
+            height: 122px;
+        }
+        .baner-top img{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+        .baner-owl img{
+
+        }
 .baner-view-more{
     position: absolute;
     right: 10%;
@@ -238,6 +249,7 @@ ul{
 .services{
   color: #fff;
   padding: 50px 0px 90px;
+  overflow: hidden;
 }
 .services-back{
     position: absolute;
@@ -247,6 +259,7 @@ ul{
     height: 100%;
     z-index: -1;
 }
+
 .services h3{
     font-family: arabic;
     font-size: 2.5em;
@@ -278,6 +291,7 @@ ul{
 }
 .brand-item:hover{
      border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 10px #A0A0A0;
     transition: all .3s;
 
 }
@@ -1192,37 +1206,49 @@ ul{
     margin-bottom: 5px;
     position: relative;
     box-shadow: 0 4px 10px #A0A0A0;
-    
     display: block;
     border-radius: 50%;
     float: left;
+    transition: all .3s ease ;
+    padding-right: 10px;
+
 }
 .ToolsRight img {
-    float: left;
+    /* float: left; */
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    filter: brightness(0);
  
 }
 .ToolsRight span {
        float: right;
     display: none;
-    font-size: 8pt;
-    width: 80px;
-    margin-top: 9px;
-    color: gray;
-    position: relative;
-    top: -34px;
+    font-size: .9em;
+    width: 120px;
+    color: #000;
+    position: absolute;
+    top: 22px;
+    left: 40px;
     transition: all .3s ease ;
   
 }
 .ToolsRight:hover {
-       width: 125px;
+       width: 170px;
     transition: all 0s 
 ease 0s;
  border-radius: 25px;
+    border: 3px solid var(--primary-color);
+    
+
 }
 .ToolsRight:hover span {
    display: block;
-    transition: all 0s ease 0s;
-position: unset;
+   
+}
+.ToolsRight:hover img {
+  filter: brightness(100%);
+   
 }
 
 .fix-items{
@@ -1240,3 +1266,111 @@ position: unset;
 
 
 
+  
+  .off-canvas {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 70%;
+    background-color: hsl(60, 2%, 84%);
+    z-index: 20001;
+    transform: translateX(100%);
+    transition: transform 0.5s;
+  }
+  .off-canvas a{
+    color: #333;
+  }
+  .overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3333335d;
+    z-index: 20001;
+    display: none;
+  }
+  .overlay-main{
+    position: fixed;
+    top: 140px;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3333335d;
+    z-index: 10002;
+    display: none;
+  }
+  .overlay-main.active{
+    display: block;
+  }
+  
+  
+  .overlay.active{
+    display: block;
+  }
+  
+  .off-canvas.active {
+    transform: translateX(0);
+  }
+  .submenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(60, 2%, 84%);
+    z-index: 20002;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+  
+  .submenu.active {
+    transform: translateX(0);
+  }
+  
+  .submenu-header {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+  }
+  
+  .back-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .back-btn i {
+    margin-left: 5px;
+  }
+  
+  .submenu-items {
+    padding: 10px 0;
+  }
+  
+  .submenu-item {
+    padding: 10px 15px;
+  }
+  
+  .submenu-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .submenu-item:not(.has-submenu) a i {
+    display: none;
+  }
+  .level-2 {
+    z-index: 20003;
+  }
+  .e-n-imgs img{
+  cursor: pointer;
+  }
