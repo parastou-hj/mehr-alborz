@@ -13,16 +13,23 @@
 <body>
     <header class="main-header">
         <div class="container-fluid px-0">
-            <div class="row">
-                <div class="col-4 pt-0 logo-sec pt-2">
+            <div class="row py-2 py-lg-0">
+                
+                <div class="col-xl-4 col-lg-3 col-6 pt-0 logo-sec pt-lg-2 d-flex ">
+                     
                     <a href="">
                         <img src="./images/brand-logo.png" alt="">
                     </a>
                 </div>
-                <div class="col-8 px-0 pt-4"  >
+                <div class="col-6 d-lg-none d-flex align-items-center justify-content-end">
+                    <div class=" bar-menu justify-content-center align-items-center d-lg-none">
+                <i class="fa-solid fa-bars" ></i>
+               </div>
+                </div>
+                <div class="col-xl-8 col-lg-9 px-0 pt-lg-4"  >
                   <div class="nav-sec px-0 d-flex align-items-center position-relative">
                       <img src="./images/nav-back.png" alt="" class="nav-back">
-                    <ul class="nav pe-5 position-relative">
+                    <ul class="nav pe-xxl-5 position-relative">
                         <li class="has-megamenu" data-megamenu-target="#all-category">
                             <a href="">محصولات</a>
                         </li>
@@ -53,29 +60,29 @@
 
                     </ul>
                     <img src="./images/search.png" alt="" class="search me-3">
-                  <!-- ✅ در بخش mega-menu، کد زیر را جایگزین کنید -->
+                 
 <div id="all-category" class="mega-menu">
     <!-- Pro-Menu اصلی -->
     <div class="pro-menu px-0">
         <div class="pro-tabs">
-            <div class="p-tab" data-tab="sand-lab" data-submenu="#sand-lab-content">
+            <div class="p-tab has-submenu" data-tab="sand-lab" data-submenu="#sand-lab-content">
                 <div><span>تجهیزات آزمایشگاه ماسه</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+               
             </div>
 
             <div class="p-tab" data-tab="metallography">
                 <div><span>تجهیزات آزمایشگاه متالوگرافی</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+               
             </div>
 
             <div class="p-tab" data-tab="grinders">
                 <div><span>آسیاب‌ها و خردکن‌ها</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+                
             </div>
 
             <div class="p-tab" data-tab="ceramic-lab">
                 <div><span>تجهیزات آزمایشگاه سرامیک</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+               
             </div>
         </div>
 
@@ -123,14 +130,14 @@
     <!--  سطح دوم: ماسه -->
     <div id="sand-lab-content" class="pro-menu px-0">
         <div class="pro-tabs">
-            <div class="p-tab" data-tab="sand-density" data-submenu="#sand-density-content">
+            <div class="p-tab has-submenu" data-tab="sand-density" data-submenu="#sand-density-content">
                 <div><span>دستگاه تراکم ماسه</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+                
             </div>
 
             <div class="p-tab" data-tab="equipment">
                 <div><span>تجهیزات اندازه‌گیری</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+                
             </div>
         </div>
 
@@ -163,12 +170,12 @@
         <div class="pro-tabs">
             <div class="p-tab" data-tab="density-model-a">
                 <div><span>دستگاه تراکم مدل A</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+                
             </div>
 
             <div class="p-tab" data-tab="density-model-b">
                 <div><span>دستگاه تراکم مدل B</span></div>
-                <i class="fa-solid fa-chevron-left"></i>
+               
             </div>
         </div>
 
@@ -196,6 +203,40 @@
         </div>
     </div>
 </div>
+<div class="search-box-wrapper">
+    <div class="search-box-container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-box-content">
+                        <button class="search-close-btn" id="closeSearch">
+                            <i class="fa fa-times"></i>
+                        </button>
+                        
+                        <form class="search-form" action="" method="GET">
+                            <div class="search-input-wrapper">
+                                <input 
+                                    type="text" 
+                                    class="search-input" 
+                                    placeholder="دنبال چه محصولی می‌گردید؟"
+                                    name="search"
+                                    id="searchInput"
+                                >
+                                <button type="submit" class="search-submit-btn">
+                                    <i class="fa fa-search"></i>
+                                    جستجو
+                                </button>
+                            </div>
+                        </form>
+                        
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
                   </div>
@@ -315,7 +356,7 @@
 
     </header>
     <main class="body-content">
-        <div class="container-fluid baner-top px-0 mt-2">
+        <div class="container-fluid baner-top px-0 mt-lg-2 mt-1">
            <div class="row px-0">
             <img src="./images/baner-top.png" alt="">
            </div>
@@ -364,25 +405,29 @@
             </div>
             <div class="row col-xl-11 mt-5">
                 <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center mb-4">
-                   <div class="cat-item d-flex flex-column align-items-center ">
-                    <div class="cat-img position-relative d-flex align-items-center">
+                   <div class="cat-item ">
+                   <a href="" class=" d-flex flex-column align-items-center">
+                     <div class="cat-img position-relative d-flex align-items-center">
                          <img src="./images/cat-back.png" alt="" class="cat-back">
                         <img src="./images/cat1.png" alt="" >
                     </div>
                     <h1>
                         تجهیزات سرامیک هنری
                     </h1>
+                   </a>
                    </div>
                 </div>
                  <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center mb-4">
                    <div class="cat-item d-flex flex-column align-items-center ">
-                    <div class="cat-img position-relative d-flex align-items-center">
+                    <a href="" class=" d-flex flex-column align-items-center">
+                        <div class="cat-img position-relative d-flex align-items-center">
                          <img src="./images/cat-back.png" alt="" class="cat-back">
                         <img src="./images/cat2.png" alt="" >
                     </div>
                     <h1>
                         کوره های الکتریکی
                     </h1>
+                    </a>
                    </div>
                 </div>
                  <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center mb-4">
@@ -512,35 +557,44 @@
             </div>
             <div class="row col-xl-11 my-5">
                 <div class="col-lg-6">
-                    <div class="blog-card position-relative mb-3">
-                       <a href="">
-                         <img src="./images/blog-big.png" alt="" class="blog-back">
-                        <div class="blog-txt">
-                            <h1>راهکارهای صنعت سرام در ناترازی؛ از حرف به عمل</h1>
-                            <span class="blog-date"> 6 مهر 1404</span>
-                        </div>
-                       </a>
-                    </div>
+                  <div class="blog-card position-relative mb-3">
+   <a href="">
+     <img src="./images/blog-big.png" alt="" class="blog-back">
+     <div class="blog-txt">
+        <h1>راهکارهای صنعت سرام در ناترازی؛ از حرف به عمل</h1>
+        <div class="blog-footer">
+            <span class="blog-date">6 مهر 1404</span>
+            <button class="blog-read-more">ادامه مطلب</button>
+        </div>
+     </div>
+   </a>
+</div>
                 </div>
                 <div class="col-lg-6">
-                     <div class="blog-card position-relative mb-3">
-                       <a href="">
-                         <img src="./images/blog2.png" alt="" class="blog-back">
-                        <div class="blog-txt">
-                            <h1>راهکارهای صنعت سرام در ناترازی؛ از حرف به عمل</h1>
-                            <span class="blog-date"> 6 مهر 1404</span>
-                        </div>
-                       </a>
-                    </div>
-                     <div class="blog-card position-relative mb-3">
-                       <a href="">
-                         <img src="./images/blog3.png" alt="" class="blog-back">
-                        <div class="blog-txt">
-                            <h1>راهکارهای صنعت سرام در ناترازی؛ از حرف به عمل</h1>
-                            <span class="blog-date"> 6 مهر 1404</span>
-                        </div>
-                       </a>
-                    </div>
+                    <div class="blog-card position-relative mb-3">
+   <a href="">
+     <img src="./images/blog2.png" alt="" class="blog-back">
+     <div class="blog-txt">
+        <h1>راهکارهای صنعت سرام در ناترازی؛ از حرف به عمل</h1>
+        <div class="blog-footer">
+            <span class="blog-date">6 مهر 1404</span>
+            <button class="blog-read-more">ادامه مطلب</button>
+        </div>
+     </div>
+   </a>
+</div>
+<div class="blog-card position-relative mb-3">
+   <a href="">
+     <img src="./images/blog2.png" alt="" class="blog-back">
+     <div class="blog-txt">
+        <h1>راهکارهای صنعت سرام در ناترازی؛ از حرف به عمل</h1>
+        <div class="blog-footer">
+            <span class="blog-date">6 مهر 1404</span>
+            <button class="blog-read-more">ادامه مطلب</button>
+        </div>
+     </div>
+   </a>
+</div>
                 </div>
             </div>
         </div>
@@ -626,22 +680,26 @@
                         <div class="owl-carousel owl-theme brand-owl">
                             <div class="brand-card p-1">
                                 <div class="brand-carousel-item text-center">
-                                <div class="brand-img">
+                               <a href="">
+                                 <div class="brand-img">
                                     <img src="./images/brand-carousel.png" alt="">
                                 </div>
                                 <div class="brand-carosuel-txt mt-3">
                                     <h4>تولید کننده تجهیزات صنایع سرامیک</h4>
                                 </div>
+                               </a>
                             </div>
                             </div>
                             <div class="brand-card p-1">
                                 <div class="brand-carousel-item text-center">
-                                <div class="brand-img">
+                               <a href="">
+                                 <div class="brand-img">
                                     <img src="./images/brand-carousel.png" alt="">
                                 </div>
                                 <div class="brand-carosuel-txt">
                                     <h4>تولید کننده تجهیزات صنایع سرامیک</h4>
                                 </div>
+                               </a>
                             </div>
                             </div>
 
@@ -730,6 +788,63 @@
         <div class="fix-call">
             <img src="./images/fix-call.png" alt="">
         </div>
+        <div class="consultation-modal" id="consultationModal">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal">
+            <i class="fa fa-times"></i>
+        </button>
+        
+        <div class="modal-header d-flex flex-column">
+            <h3>مشاوره با کارشناسان حرفه‌ای </h3>
+            <p>لطفا فرم زیر را با دقتی تکمیل نمایید تا اولین فرصت کارشناسان ما، با شما تماس خواهند گرفت</p>
+        </div>
+        
+        <form class="consultation-form">
+            <div class="form-group">
+                <label>نام و نام خانوادگی</label>
+                <input type="text" class="form-control" placeholder="نام و نام خانوادگی">
+            </div>
+            
+            <div class="form-group">
+                <label>تلفن همراه</label>
+                <input type="tel" class="form-control" placeholder="09xxxxxxxxx">
+            </div>
+            
+            <div class="form-group">
+                <label>مایل به عنوان مشاوره در یافت اطلاعات ، کدام نوع دستگاه میباشید ؟</label>
+                <select class="form-control">
+                    <option value="">انتخاب کنید</option>
+                    <option>تجهیزات آزمایشگاه ماسه</option>
+                    <option>تجهیزات آزمایشگاه متالوگرافی</option>
+                    <option>آسیاب‌ها و خردکن‌ها</option>
+                    <option>تجهیزات آزمایشگاه سرامیک</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>متایل هستید از چه طریقی با شما تماس گرفته شود ؟</label>
+                <select class="form-control">
+                    <option value="">انتخاب کنید</option>
+                    <option>تماس تلفنی</option>
+                    <option>پیامک</option>
+                    <option>واتساپ</option>
+                    <option>ایمیل</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>توضیحات : ( در صورت نیاز : در کنار زیر بصورت مختصر درج نمایید )</label>
+                <textarea class="form-control" rows="3" placeholder="توضیحات خود را بنویسید..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                ثبت درخواست مشاوره رایگان
+            </button>
+        </form>
+       
+    </div>
+</div>
+
        <div class="row col-xl-11">
          <div class=" footer-top text-center">
             <div class="footer-logo">

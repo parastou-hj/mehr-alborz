@@ -109,6 +109,7 @@ ul{
 }
 .search{
     margin-top: -20px;
+    cursor: pointer;
 }
 .about-back{
     position: absolute;
@@ -153,7 +154,7 @@ ul{
             transition: all 0.3s ease;
         }
    .more-btn:hover {
-            background-color: var(--accent-color);
+            background-color: #333;
             transform: scale(1.05);
        
         }
@@ -199,13 +200,72 @@ ul{
 }
 .cat-item{
     text-align: center;
+    cursor: pointer;
 }
+cat-item:hover .cat-img {
+    transform: scale(1.1);
+    box-shadow: 
+        0 0 20px rgba(185, 28, 28, 0.4),
+        0 0 40px rgba(185, 28, 28, 0.3),
+        0 0 60px rgba(185, 28, 28, 0.2);
+}
+
+
+.cat-back {
+    transition: all 0.4s ease;
+}
+
+.cat-item:hover .cat-back {
+    filter: brightness(1.2);
+    transform: rotate(180deg) ;
+}
+
+.cat-img > img:not(.cat-back) {
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.cat-item:hover .cat-img > img:not(.cat-back) {
+    transform: scale(1.1);
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.cat-item h1 {
+    transition: all 0.3s ease;
+    color: #333;
+    font-weight: bold;
+}
+
+.cat-item:hover h1 {
+    color: var(--primary-color);
+    /* transform: translateY(-5px); */
+}
+
+/* افکت لرزش ملایم
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+} */
+
+.cat-item:hover .cat-img {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+
 .cat-img{
     width: 126px;
     height: 126px;
     display: flex;
     justify-content: center;
+    position: relative;
+    border-radius: 50%;
 }
+
 .cat-img .cat-back{
     position: absolute;
     top: 0;
@@ -240,11 +300,67 @@ ul{
 .blog-txt h1{
     font-size: 1em;
     padding-bottom: 15px;
-    border-bottom: 1px solid #8a8989;
+    
     width: 100%;
 }
 .blog-date{
     font-size: .9em;
+}
+/* ===== استایل‌های Hover برای بلاگ ===== */
+
+.blog-card {
+    overflow: hidden;
+}
+
+/* Zoom روی عکس */
+.blog-back {
+    transition: transform 0.4s ease;
+}
+
+.blog-card:hover .blog-back {
+    transform: scale(1.08);
+}
+
+/* ساختار جدید blog-txt */
+.blog-txt h1 {
+    padding-bottom: 50px;
+}
+
+.blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    border-top: 1px solid #8a8989;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* دکمه ادامه مطلب */
+.blog-read-more {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover .blog-read-more {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blog-read-more:hover {
+    background-color: #fff;
+    color: var(--primary-color);
 }
 .services{
   color: #fff;
@@ -273,6 +389,55 @@ ul{
     color:#fff;
    
 }
+/* ========== افکت Hover بخش Services ========== */
+
+.services {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    
+}
+
+
+.services-back {
+    transition: transform 0.6s ease;
+}
+
+.service-txt {
+    transition: all 0.4s ease;
+}
+
+.services:hover .service-txt {
+    transform: translateY(-5px);
+}
+
+.services:hover .service-txt h3 {
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+.services:hover .service-txt p {
+    opacity: 0.95;
+}
+
+.service-txt a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.services:hover .service-txt a {
+    transform: translateX(-10px);
+}
+
+.service-txt a img {
+    transition: transform 0.3s ease;
+}
+
+.services:hover .service-txt a img {
+    transform: translateX(-5px);
+}
+
+
 .brands h3{
     font-family: arabic;
     font-size: 2em;
@@ -311,6 +476,7 @@ ul{
 .brand-carosuel-txt h4{
     font-size: 1em;
     margin-top: 15px;
+    color: #000;
 }
 .brand-img img{
     width: auto !important;
@@ -403,6 +569,18 @@ ul{
   }
   .social a{
     padding: 10px 15px;
+    transition: all .2s ease;
+
+  }
+   .social a img{
+    transition: all .2s ease;
+
+   }
+
+  .social a img:hover{
+    /* transform: translateY(-5px); */
+    transform: scale(1.2);
+    transition: all .3s ease;
   }
   .footer-part{
     display: flex;
@@ -453,8 +631,19 @@ ul{
              font-family: IRANYekanWebLight;
             
         }
+        .footer-links li:hover{
+         transform: translateX(-2px);
+         transition:all .3s;
+            
+        }
+        .footer-links li:hover a{
+            text-decoration: underline;
+        }
+
         .footer-links li{
  padding: 5px 0px;
+         transition:all .3s;
+
         }
         .footer-column h4{
             font-size: 1em;
@@ -478,7 +667,8 @@ ul{
             position: fixed;
             right: 10px;
             bottom: 50px;
-            z-index: 10000;
+            z-index: 10007;
+            cursor: pointer;
         }
         
 
@@ -534,6 +724,9 @@ ul{
     }
   }
   @media  (max-width:576px){
+    .fix-items{
+        display: none;
+    }
    .main-footer{
     margin-top: -80px;
    }
@@ -728,7 +921,7 @@ ul{
 }
 
 .p-tab.active::after {
-    content: '';
+    /* content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -736,7 +929,7 @@ ul{
     bottom: 0;
     background: linear-gradient(90deg, 
         rgba(255, 107, 53, 0.03) 0%, 
-        transparent 100%);
+        transparent 100%); */
 }
 
 .p-tab > div {
@@ -1151,7 +1344,7 @@ ul{
 }
 
 .p-tab[data-submenu]::after {
-    content: '';
+    /* content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -1159,7 +1352,7 @@ ul{
     width: 3px;
     background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease; */
 }
 
 .p-tab[data-submenu]:hover::after {
@@ -1374,3 +1567,375 @@ ease 0s;
   .e-n-imgs img{
   cursor: pointer;
   }
+  .has-submenu{
+    position: relative;
+  }
+  .has-submenu::after{
+    content: "\f053";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+   color: #fff;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; 
+  }
+  .has-submenu:hover::after {
+  color: var(--primary-color);
+}
+
+.consultation-modal {
+    position: fixed;
+    right: -450px;
+    bottom: 0px;
+    width: 420px;
+    height: 100%;
+    z-index: 10006;
+    transition: left 0.4s ease;
+}
+
+.consultation-modal.active {
+    right: 0px;
+}
+
+.modal-content {
+    background: #fff;
+    /* border-radius: 15px; */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    padding: 25px;
+    position: relative;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #000;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+    /* padding-right: 35px; */
+}
+
+.modal-header h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.modal-header p {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.consultation-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    font-size: 0.8em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: iranyekanwebregularfanum;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-support-icon {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    opacity: 0.15;
+}
+
+.modal-support-icon img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+}
+
+/* Scrollbar */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .consultation-modal {
+        width: calc(100% - 20px);
+        left: -100%;
+        bottom: 10px;
+    }
+    
+    .consultation-modal.active {
+        left: 10px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+        max-height: 90vh;
+    }
+}
+.search-box-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 10000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    margin-top: -30px;
+}
+
+.search-box-wrapper.active {
+    max-height: 300px;
+}
+
+.search-box-container {
+    padding: 10px 0;
+}
+
+.search-box-content {
+    position: relative;
+    padding: 0 30px 0 100px;
+}
+
+.search-close-btn {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: #333;
+    color: #fff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.search-close-btn:hover {
+    background: #fff;
+    transform: translateY(-50%) rotate(90deg);
+    color: var(--primary-color);
+}
+
+.search-form {
+    /* margin-bottom: 20px; */
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f5f5f5;
+    border-radius: 50px;
+    padding: 5px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.search-input-wrapper:focus-within {
+    background: #fff;
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 20px rgba(185, 28, 28, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px 20px;
+    font-size: 1em;
+    font-family: iranyekanwebregularfanum;
+    color: #333;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #999;
+    font-size: .9em;
+}
+
+.search-submit-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.search-submit-btn:hover {
+    background: #000;
+    transform: scale(1.05);
+}
+
+.search-submit-btn i {
+    font-size: 0.9em;
+}
+@media (max-width: 1400px) {
+    .logo-sec{
+        padding-right: 10px;
+    }
+      .logo-sec img{
+        width: 80%;
+    }
+    
+    
+}
+@media (max-width: 1200px) {
+    .logo-sec img{
+        padding-top: 10px;
+    }
+    .about-img {
+    width: 100%;
+}
+    
+    
+    
+}
+@media (max-width: 991px) {
+    .search-box-content {
+        padding: 0 20px;
+    }
+    
+    .search-close-btn {
+        left: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-sec img{
+        /* width: 50%; */
+        /* margin-right: auto; */
+        padding-top: 0px;
+    }
+    .bar-menu {
+        font-size: 1.3em;
+    }
+    .logo-sec{
+        align-items: center;
+    }
+    .search-box-wrapper.active {
+        max-height: 350px;
+    }
+    
+    .search-box-container {
+        padding: 20px 0;
+    }
+    
+    .search-input-wrapper {
+        flex-direction: column;
+        border-radius: 15px;
+        gap: 10px;
+    }
+    
+    .search-input {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .search-submit-btn {
+        width: 100%;
+        justify-content: center;
+        border-radius: 25px;
+    }
+    
+    .search-suggestions {
+        justify-content: center;
+    }
+}

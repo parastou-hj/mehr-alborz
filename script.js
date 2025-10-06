@@ -534,3 +534,66 @@ $('.bar-menu i').on('click', function(){
   
     }})
 
+document.querySelector('.fix-call').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('consultationModal').classList.add('active');
+});
+
+// Close Modal
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('consultationModal').classList.remove('active');
+});
+
+// Close on outside click
+document.getElementById('consultationModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.remove('active');
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchIcon = document.querySelector('.search');
+    const searchBox = document.querySelector('.search-box-wrapper');
+    const closeSearchBtn = document.getElementById('closeSearch');
+    const searchInput = document.getElementById('searchInput');
+    
+    // Open Search Box
+    if (searchIcon) {
+        searchIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            searchBox.classList.add('active');
+            
+            // Focus on input after animation
+            setTimeout(() => {
+                searchInput.focus();
+            }, 400);
+        });
+    }
+    
+    // Close Search Box
+    if (closeSearchBtn) {
+        closeSearchBtn.addEventListener('click', function() {
+            searchBox.classList.remove('active');
+        });
+    }
+    
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchBox.classList.contains('active')) {
+            searchBox.classList.remove('active');
+        }
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target) && !searchIcon.contains(e.target)) {
+            searchBox.classList.remove('active');
+        }
+    });
+    
+    // Prevent closing when clicking inside search box
+    searchBox.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    });
