@@ -1,285 +1,184 @@
 
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const megaMenuTriggers = document.querySelectorAll('.has-megamenu');
     const allMegaMenus = document.querySelectorAll('.mega-menu');
-    let hoverTimeout = null;
     let activeMenu = null;
-    let activeTriggerLi = null;
-    let menuHistory = []; // تاریخچه منوها برای navigation
+    let activeTrigger = null;
+    let hoverTimeout = null;
+    let menuHistory = [];
 
-    const closeAllMegaMenus = (immediately = false) => {
-        allMegaMenus.forEach(menu => {
-            if (menu.classList.contains('active')) {
-                menu.classList.remove('active');
-            }
-            const allProMenus = menu.querySelectorAll('.pro-menu');
-            allProMenus.forEach(pm => {
-                pm.classList.remove('active', 'slide-out');
-            });
+    const closeAll = function() {
+        allMegaMenus.forEach(function(menu) {
+            menu.classList.remove('active');
         });
-        if (activeTriggerLi) {
-            activeTriggerLi.classList.remove('active-trigger');
-        }
+        document.querySelectorAll('.mega-menu-container').forEach(function(c) {
+            c.classList.remove('active');
+        });
+        document.querySelectorAll('.menu-tab.active').forEach(function(t) {
+            t.classList.remove('active');
+        });
+        document.querySelectorAll('.content-item.active').forEach(function(c) {
+            c.classList.remove('active');
+        });
+        if (activeTrigger) activeTrigger.classList.remove('active-trigger');
         activeMenu = null;
-        activeTriggerLi = null;
-        menuHistory = []; // ریست کردن تاریخچه
-        if (hoverTimeout && !immediately) {
-            clearTimeout(hoverTimeout);
-            hoverTimeout = null;
-        }
+        activeTrigger = null;
+        menuHistory = [];
     };
 
-    const activateFirstTab = (menu) => {
-        if (!menu) return;
-        
-        const mainProMenu = menu.querySelector('.pro-menu:not([id])');
-        if (!mainProMenu) return;
+    const showMenu = function(menuId, isBack) {
+        isBack = isBack || false;
+        const container = document.querySelector('[data-menu="' + menuId + '"]');
+        if (!container) return;
 
-        const tabs = mainProMenu.querySelectorAll('.pro-tabs > .p-tab');
-        const contents = mainProMenu.querySelectorAll('.pro-contents > .p-content');
-
-        tabs.forEach(tab => tab.classList.remove('active'));
-        contents.forEach(content => content.classList.remove('active'));
-
-        if (tabs.length > 0) {
-            const firstTab = tabs[0];
-            const firstContentId = firstTab.getAttribute('data-tab');
-            const firstContent = mainProMenu.querySelector(`.pro-contents > #${firstContentId}`);
-
-            firstTab.classList.add('active');
-            if (firstContent) {
-                firstContent.classList.add('active');
+        document.querySelectorAll('.mega-menu-container.active').forEach(function(c) {
+            if (!c.classList.contains('slide-out-left')) {
+                c.classList.remove('active');
             }
-        }
+        });
 
-        mainProMenu.classList.add('active');
-        menuHistory = [mainProMenu]; // شروع تاریخچه با منوی اصلی
-    };
-
-    const showSubProMenu = (subMenuId, parentMegaMenu) => {
-        const currentProMenu = parentMegaMenu.querySelector('.pro-menu.active');
-        const subProMenu = parentMegaMenu.querySelector(subMenuId);
-
-        if (!subProMenu || !currentProMenu) return;
-
-        // اضافه کردن منوی فعلی به تاریخچه قبل از رفتن به زیرمنو
-        if (!menuHistory.includes(currentProMenu)) {
-            menuHistory.push(currentProMenu);
-        }
-
-        currentProMenu.classList.add('slide-out');
-
-        setTimeout(() => {
-            currentProMenu.classList.remove('active');
-            
-            subProMenu.classList.add('active');
-            
-            const subTabs = subProMenu.querySelectorAll('.pro-tabs > .p-tab');
-            const subContents = subProMenu.querySelectorAll('.pro-contents > .p-content');
-            
-            subTabs.forEach(tab => tab.classList.remove('active'));
-            subContents.forEach(content => content.classList.remove('active'));
-            
-            if (subTabs.length > 0) {
-                const firstTab = subTabs[0];
-                const firstContentId = firstTab.getAttribute('data-tab');
-                const firstContent = subProMenu.querySelector(`.pro-contents > #${firstContentId}`);
-                
-                firstTab.classList.add('active');
-                if (firstContent) {
-                    firstContent.classList.add('active');
-                }
-            }
-
-            setTimeout(() => {
-                currentProMenu.classList.remove('slide-out');
-            }, 50);
-        }, 300);
-    };
-
-    const goBackToPreviousMenu = (parentMegaMenu) => {
-        const currentProMenu = parentMegaMenu.querySelector('.pro-menu.active');
+        container.classList.add('active');
         
-        // اگر تاریخچه خالی است یا فقط یک منو دارد، به منوی اصلی برگرد
-        if (menuHistory.length <= 1) {
-            const mainProMenu = parentMegaMenu.querySelector('.pro-menu:not([id])');
-            if (!currentProMenu || !mainProMenu || currentProMenu === mainProMenu) return;
-
-            currentProMenu.classList.add('slide-out-reverse');
-
-            setTimeout(() => {
-                currentProMenu.classList.remove('active');
-                mainProMenu.classList.add('active');
-
-                setTimeout(() => {
-                    currentProMenu.classList.remove('slide-out-reverse');
-                }, 50);
+        if (isBack) {
+            container.classList.add('slide-in-left');
+            setTimeout(function() {
+                container.classList.remove('slide-in-left');
             }, 300);
-            return;
+        } else if (menuId !== 'main') {
+            container.classList.add('slide-in-right');
+            setTimeout(function() {
+                container.classList.remove('slide-in-right');
+            }, 300);
         }
-
-        // برگشت به منوی قبلی در تاریخچه
-        const previousMenu = menuHistory[menuHistory.length - 1];
         
-        if (!currentProMenu || !previousMenu || currentProMenu === previousMenu) return;
-
-        currentProMenu.classList.add('slide-out-reverse');
-
-        setTimeout(() => {
-            currentProMenu.classList.remove('active');
-            previousMenu.classList.add('active');
-            
-            // حذف آخرین منو از تاریخچه
-            menuHistory.pop();
-
-            setTimeout(() => {
-                currentProMenu.classList.remove('slide-out-reverse');
-            }, 50);
-        }, 300);
+        const firstTab = container.querySelector('.menu-tab');
+        const firstContent = container.querySelector('.content-item');
+        if (firstTab) firstTab.classList.add('active');
+        if (firstContent) firstContent.classList.add('active');
     };
 
-    megaMenuTriggers.forEach(triggerLi => {
-        const targetMenuId = triggerLi.getAttribute('data-megamenu-target');
-        const targetSelector = targetMenuId.startsWith('#') ? targetMenuId : `#${targetMenuId}`;
-        const targetMenu = triggerLi.closest('.nav-sec').querySelector(targetSelector);
+    megaMenuTriggers.forEach(function(trigger) {
+        const targetId = trigger.getAttribute('data-megamenu-target').replace('#', '');
+        const menu = document.getElementById(targetId);
+        if (!menu) return;
 
-        if (!targetMenu) {
-            console.warn('Mega menu not found for target:', targetSelector);
-            return;
-        }
-
-        triggerLi.addEventListener('mouseenter', function() {
-            if (hoverTimeout) {
-                clearTimeout(hoverTimeout);
-                hoverTimeout = null;
-            }
-
-            if (activeMenu && activeMenu !== targetMenu) {
-                closeAllMegaMenus(true);
-            }
-
-            if (!targetMenu.classList.contains('active')) {
-                closeAllMegaMenus(true);
-                activeMenu = targetMenu;
-                activeTriggerLi = this;
-                activateFirstTab(activeMenu);
-                activeMenu.classList.add('active');
-                activeTriggerLi.classList.add('active-trigger');
-            }
+        trigger.addEventListener('mouseenter', function() {
+            clearTimeout(hoverTimeout);
+            closeAll();
+            activeMenu = menu;
+            activeTrigger = trigger;
+            menu.classList.add('active');
+            trigger.classList.add('active-trigger');
+            menuHistory = ['main'];
+            showMenu('main');
         });
 
-        triggerLi.addEventListener('mouseleave', function() {
-            hoverTimeout = setTimeout(() => {
-                if (activeMenu && !activeMenu.matches(':hover')) {
-                    closeAllMegaMenus(true);
-                }
-                hoverTimeout = null;
+        trigger.addEventListener('mouseleave', function() {
+            hoverTimeout = setTimeout(function() {
+                if (!menu.matches(':hover')) closeAll();
             }, 250);
         });
     });
 
-    allMegaMenus.forEach(menu => {
-        menu.addEventListener('mouseenter', () => {
-            if (hoverTimeout) {
-                clearTimeout(hoverTimeout);
-                hoverTimeout = null;
-            }
+    allMegaMenus.forEach(function(menu) {
+        menu.addEventListener('mouseenter', function() {
+            clearTimeout(hoverTimeout);
         });
-
-        menu.addEventListener('mouseleave', () => {
-            hoverTimeout = setTimeout(() => {
-                if (activeTriggerLi && !activeTriggerLi.matches(':hover')) {
-                    closeAllMegaMenus(true);
-                }
-                hoverTimeout = null;
+        
+        menu.addEventListener('mouseleave', function() {
+            hoverTimeout = setTimeout(function() {
+                if (activeTrigger && !activeTrigger.matches(':hover')) closeAll();
             }, 250);
-        });
-
-        const backButtons = menu.querySelectorAll('.submenu-back-btn');
-        backButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                goBackToPreviousMenu(menu);
-            });
-        });
-
-        // تب‌های منوی اصلی
-        const mainProMenu = menu.querySelector('.pro-menu:not([id])');
-        if (mainProMenu) {
-            const megaMenuTabs = mainProMenu.querySelectorAll('.pro-tabs > .p-tab');
-            
-            megaMenuTabs.forEach(tab => {
-                if (tab.hasAttribute('data-submenu')) {
-                    tab.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const subMenuId = this.getAttribute('data-submenu');
-                        showSubProMenu(subMenuId, menu);
-                    });
-                }
-                
-                tab.addEventListener('mouseenter', function() {
-                    if (!menu.classList.contains('active')) return;
-
-                    const tabTargetId = this.getAttribute('data-tab');
-                    const tabTargetContent = mainProMenu.querySelector(`.pro-contents > #${tabTargetId}`);
-
-                    if (tabTargetContent && !this.classList.contains('active')) {
-                        const currentMenuTabs = mainProMenu.querySelectorAll('.pro-tabs > .p-tab');
-                        const currentMenuContents = mainProMenu.querySelectorAll('.pro-contents > .p-content');
-
-                        currentMenuTabs.forEach(t => t.classList.remove('active'));
-                        currentMenuContents.forEach(content => content.classList.remove('active'));
-
-                        tabTargetContent.classList.add('active');
-                        this.classList.add('active');
-                    }
-                });
-            });
-        }
-
-        // تب‌های منوهای فرعی
-        const subProMenus = menu.querySelectorAll('.pro-menu[id]');
-        subProMenus.forEach(subMenu => {
-            const subTabs = subMenu.querySelectorAll('.pro-tabs > .p-tab');
-            
-            subTabs.forEach(tab => {
-                if (tab.hasAttribute('data-submenu')) {
-                    tab.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const subMenuId = this.getAttribute('data-submenu');
-                        showSubProMenu(subMenuId, menu);
-                    });
-                }
-                
-                tab.addEventListener('mouseenter', function() {
-                    if (!subMenu.classList.contains('active')) return;
-
-                    const tabTargetId = this.getAttribute('data-tab');
-                    const tabTargetContent = subMenu.querySelector(`.pro-contents > #${tabTargetId}`);
-
-                    if (tabTargetContent && !this.classList.contains('active')) {
-                        const currentTabs = subMenu.querySelectorAll('.pro-tabs > .p-tab');
-                        const currentContents = subMenu.querySelectorAll('.pro-contents > .p-content');
-
-                        currentTabs.forEach(t => t.classList.remove('active'));
-                        currentContents.forEach(content => content.classList.remove('active'));
-
-                        tabTargetContent.classList.add('active');
-                        this.classList.add('active');
-                    }
-                });
-            });
         });
     });
 
-    document.addEventListener('click', function(event) {
-        if (activeMenu && !activeMenu.contains(event.target) && 
-            activeTriggerLi && !activeTriggerLi.contains(event.target)) {
-            closeAllMegaMenus(true);
+    document.addEventListener('click', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
+        
+        const tab = e.target.closest('.menu-tab');
+        if (!tab) return;
+
+        const container = tab.closest('.mega-menu-container');
+        const target = tab.getAttribute('data-target');
+        const hasSub = tab.hasAttribute('data-has-sub');
+
+        if (hasSub) {
+            e.stopPropagation();
+            const currentMenuId = container.getAttribute('data-menu');
+            menuHistory.push(currentMenuId);
+            
+            container.classList.add('slide-out-left');
+            
+            setTimeout(function() {
+                container.classList.remove('active', 'slide-out-left');
+                showMenu(target, false);
+            }, 300);
+        } else {
+            container.querySelectorAll('.menu-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
+            container.querySelectorAll('.content-item').forEach(function(c) {
+                c.classList.remove('active');
+            });
+
+            tab.classList.add('active');
+            const content = container.querySelector('[data-content="' + target + '"]');
+            if (content) content.classList.add('active');
+        }
+    });
+
+    document.addEventListener('mouseenter', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
+        
+        const tab = e.target.closest('.menu-tab');
+        if (!tab) return;
+
+        const container = tab.closest('.mega-menu-container');
+        if (!container || !container.classList.contains('active')) return;
+
+        const target = tab.getAttribute('data-target');
+        
+        container.querySelectorAll('.menu-tab').forEach(function(t) {
+            t.classList.remove('active');
+        });
+        container.querySelectorAll('.content-item').forEach(function(c) {
+            c.classList.remove('active');
+        });
+
+        tab.classList.add('active');
+        const content = container.querySelector('[data-content="' + target + '"]');
+        if (content) content.classList.add('active');
+    }, true);
+
+    document.addEventListener('click', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
+        
+        const backBtn = e.target.closest('.menu-back-btn');
+        if (!backBtn) return;
+
+        if (menuHistory.length > 0) {
+            const currentContainer = document.querySelector('.mega-menu-container.active');
+            const previousMenu = menuHistory.pop();
+            
+            if (currentContainer) {
+                currentContainer.classList.add('slide-out-left');
+                
+                setTimeout(function() {
+                    currentContainer.classList.remove('active', 'slide-out-left');
+                    showMenu(previousMenu, true);
+                }, 300);
+            } else {
+                showMenu(previousMenu, true);
+            }
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target) return;
+        
+        if (activeMenu && !activeMenu.contains(e.target) && 
+            activeTrigger && !activeTrigger.contains(e.target)) {
+            closeAll();
         }
     });
 });
@@ -309,17 +208,21 @@ $(document).ready(function(){
         dots: false
     });
 
-
-  $(".brand-owl").owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        rtl: true,
-        nav: false,
-        dots: false
-    });
+// کاروسل برند با dots فعال
+$(".brand-owl").owlCarousel({
+    items: 1,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplayHoverPause: true,
+    rtl: true,
+    nav: false,
+    dots: true,  // فعال کردن نقاط
+    dotsClass: 'owl-dots',
+    dotClass: 'owl-dot',
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn'
+});
 
 
 

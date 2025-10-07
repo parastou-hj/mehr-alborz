@@ -111,6 +111,25 @@ ul{
     margin-top: -20px;
     cursor: pointer;
 }
+.lang{
+    margin-top: -20px;
+    color: #fff;
+    font-size: .8em;
+    position: relative;
+}
+.lang:before{
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 25%;
+    height: 60%;
+    background-color: #fff;
+    width: 2px;
+}
+.lang .lang-img{
+    width: 22px;
+    height:22px;
+}
 .about-back{
     position: absolute;
     right: 0;
@@ -443,6 +462,94 @@ cat-item:hover .cat-img {
     font-size: 2em;
     margin-bottom: 80px;
 }
+/* ===== بخش برندها با CSS Grid ===== */
+
+.brands h3 {
+    font-family: arabic;
+    font-size: 2em;
+    margin-bottom: 80px;
+}
+
+/* گرید برندها */
+.brands-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* آیتم برند */
+.brand-item {
+    border: 3px solid hsl(0, 0%, 86%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+    border-radius: 25px;
+    height: 100px;
+    transition: all 0.3s ease;
+}
+
+.brand-item:hover {
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 10px #A0A0A0;
+}
+
+.brand-item img {
+    filter: brightness(0);
+    transition: all 0.3s ease;
+    max-width: 100%;
+    height: auto;
+}
+
+.brand-item:hover img {
+    filter: brightness(100%);
+}
+
+/* ===== Responsive Grid ===== */
+
+/* تبلت بزرگ: 3 ستون */
+@media (max-width: 1200px) {
+    .brands-items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+}
+
+/* تبلت: 2 ستون */
+@media (max-width: 768px) {
+    .brands-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .brands h3 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .brand-item {
+        height: 90px;
+        padding: 20px 10px;
+    }
+}
+
+/* موبایل: 2 ستون کوچکتر */
+@media (max-width: 576px) {
+    .brands-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .brand-item {
+        height: 80px;
+        padding: 15px 8px;
+        border-radius: 15px;
+    }
+}
 .brand-item{
     border: 3px solid hsl(0, 0%, 86%);
     display: flex;
@@ -484,7 +591,7 @@ cat-item:hover .cat-img {
 .brand-carosuel{
     border: 1px solid var(--primary-color);
     height: 400px;
-    padding: 20px;
+    padding: 20px 20px 30px 20px;
     border-radius: 15px;
     box-shadow: 0px 0px 20px 5px #dadbdb6c;
 
@@ -670,6 +777,367 @@ cat-item:hover .cat-img {
             z-index: 10007;
             cursor: pointer;
         }
+        /* ===== استایل Off-Canvas ===== */
+.off-canvas {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 280px;
+    max-width: 85%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    z-index: 20001;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+.off-canvas.active {
+    transform: translateX(0);
+}
+
+/* هدر Off-Canvas */
+.off-canvas-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #c41c1c 100%);
+    color: #fff;
+    padding: 20px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.off-canvas-header span {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #fff;
+    transform: rotate(90deg);
+}
+
+.close-btn:hover i {
+    color: var(--primary-color);
+}
+
+.close-btn i {
+    font-size: 1.2em;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+ 
+  .off-canvas .has-submenu::after{
+    content: "\f053";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+   color: #141313;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; 
+  }
+  .has-submenu:hover::after {
+  color: var(--primary-color);
+}
+
+
+/* ناوبری Off-Canvas */
+.off-canvas-nav {
+    padding: 10px 0;
+}
+
+/* آیتم‌های Off-Canvas */
+.off-canvas-item {
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.off-canvas-item:last-child {
+    border-bottom: none;
+}
+
+.off-canvas-item > a,
+.off-canvas-item > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.off-canvas-item:hover {
+    background: linear-gradient(90deg, rgba(185, 28, 28, 0.05) 0%, transparent 100%);
+}
+
+.off-canvas-item:hover > a,
+.off-canvas-item:hover > span {
+    color: var(--primary-color);
+    padding-right: 25px;
+}
+
+/* آیکون چورون */
+.off-canvas-item i {
+    font-size: 0.8em;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.off-canvas-item:hover i {
+    color: var(--primary-color);
+    transform: translateX(-3px);
+}
+
+/* دکمه Category */
+.category-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* ===== استایل Submenu ===== */
+.submenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 85%;
+    height: 100%;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    z-index: 20002;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+.submenu.active {
+    transform: translateX(0);
+}
+
+.submenu.level-2 {
+    z-index: 20003;
+}
+
+/* هدر Submenu */
+.submenu-header {
+    background: linear-gradient(135deg, #495057 0%, #343a40 100%);
+    padding: 15px;
+    border-bottom: 2px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submenu-header span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/* دکمه بازگشت */
+.back-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.back-btn:hover {
+    background: #fff;
+    transform: translateX(3px);
+}
+
+.back-btn:hover i,
+.back-btn:hover span {
+    color: #333;
+}
+
+.back-btn i {
+    margin-left: 5px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.back-btn span {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* آیتم‌های Submenu */
+.submenu-items {
+    padding: 10px 0;
+}
+
+.submenu-item {
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.submenu-item:last-child {
+    border-bottom: none;
+}
+
+.submenu-item a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+}
+
+.submenu-item:hover {
+    background: linear-gradient(90deg, rgba(185, 28, 28, 0.05) 0%, transparent 100%);
+}
+
+.submenu-item:hover a {
+    color: var(--primary-color);
+    padding-right: 25px;
+}
+
+.submenu-item a i {
+    font-size: 0.8em;
+    color: #999;
+    transition: all 0.3s ease;
+}
+
+.submenu-item:hover a i {
+    color: var(--primary-color);
+    transform: translateX(-3px);
+}
+
+/* مخفی کردن آیکون برای آیتم‌های بدون زیرمنو */
+.submenu-item:not(.has-submenu) a i {
+    display: none;
+}
+
+/* دکمه‌های Subcategory */
+.subcategory-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* افکت Active برای آیتم‌ها */
+.off-canvas-item.active,
+.submenu-item.active {
+    background: rgba(185, 28, 28, 0.08);
+    border-right: 4px solid var(--primary-color);
+}
+
+.off-canvas-item.active > a,
+.off-canvas-item.active > span,
+.submenu-item.active a {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Scrollbar سفارشی */
+.off-canvas::-webkit-scrollbar,
+.submenu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.off-canvas::-webkit-scrollbar-track,
+.submenu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.off-canvas::-webkit-scrollbar-thumb,
+.submenu::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+.off-canvas::-webkit-scrollbar-thumb:hover,
+.submenu::-webkit-scrollbar-thumb:hover {
+    background: #a51d1d;
+}
+
+/* ===== Overlay ===== */
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 576px) {
+    .off-canvas,
+    .submenu {
+        width: 85%;
+        max-width: 320px;
+    }
+    
+    .off-canvas-item > a,
+    .off-canvas-item > span,
+    .submenu-item a {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+}
+
+/* ===== انیمیشن ورود ===== */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.off-canvas.active,
+.submenu.active {
+    animation: slideInRight 0.4s ease;
+}
         
 
 
@@ -724,6 +1192,41 @@ cat-item:hover .cat-img {
     }
   }
   @media  (max-width:576px){
+     body {
+          
+            font-size: 13px;
+        }
+        .cat-img .cat-back{
+            width: 100%;
+        }
+        .cat-img {
+    width: 116px;
+    height: 116px;
+        }
+        .title-sec h3 {
+            font-size: 1.3em;
+        }
+        .btn-label {
+    white-space: nowrap;
+    font-size: 1em;
+        }
+    .about-sec h3 {
+  
+    font-size: 1.2em;
+}
+.more-btn{
+        width: 35px;
+    height: 35px;
+   
+    font-size: 15px;
+}
+.category-sec h2{
+    font-size: 1.3em;
+}
+.about-sec h4 {
+
+    font-size: 1.1em;
+}
     .fix-items{
         display: none;
     }
@@ -811,7 +1314,7 @@ cat-item:hover .cat-img {
 }
 
 .nav li.active-trigger a,
-.nav li.has-megamenu:hover a {
+.nav li:hover a {
     background-color: #4a4a4a;
     padding: 10px 12px;
     border-radius: 5px;
@@ -843,202 +1346,6 @@ cat-item:hover .cat-img {
     height: 100%;
 }
 
-/* --- Enhanced Tabs Section --- */
-.pro-tabs {
-    width: 30%;
-    background-color: #4a4a4a;
-    height: 100%;
-    max-height: 100%;
-    overflow-y: auto;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-.pro-tabs::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(0, 0, 0, 0.1) 0%, 
-        transparent 50%, 
-        rgba(0, 0, 0, 0.05) 100%);
-    pointer-events: none;
-}
-
-.p-tab {
-    padding: 18px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.p-tab::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.1), 
-        transparent);
-    transition: right 0.4s ease;
-}
-
-.p-tab:hover::before {
-    right: 100%;
-}
-
-.p-tab:last-child {
-    border-bottom: none;
-}
-
-.p-tab:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(3px);
-    box-shadow: inset 3px 0 0 rgba(255, 107, 53, 0.5);
-}
-
-.p-tab.active {
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    color: var(--primary-color);
-    border-right: 4px solid var(--primary-color);
-    margin-right: -1px;
-    font-weight: bold;
-    transform: translateX(5px);
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.1),
-        inset 0 0 20px rgba(255, 107, 53, 0.05);
-}
-
-.p-tab.active::after {
-    /* content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, 
-        rgba(255, 107, 53, 0.03) 0%, 
-        transparent 100%); */
-}
-
-.p-tab > div {
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.p-tab span {
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-    margin-right: 8px;
-    transition: all 0.3s ease;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.p-tab:hover span {
-    color: #fff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-.p-tab.active span {
-    color: var(--primary-color);
-    font-weight: bold;
-    text-shadow: none;
-}
-
-.p-tab .fa-fw { 
-    width: 20px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-}
-
-.p-tab:hover .fa-fw {
-    color: #fff;
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
-}
-
-.p-tab.active .fa-fw {
-    color: var(--primary-color);
-    transform: scale(1.1);
-    filter: none;
-}
-
-.p-tab i.fa-chevron-left {
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.6);
-    transition: all 0.3s ease;
-}
-
-.p-tab:hover i.fa-chevron-left {
-    color: rgba(255, 255, 255, 0.9);
-    transform: translateX(-2px);
-}
-
-.p-tab.active i.fa-chevron-left {
-    color: var(--primary-color);
-    transform: translateX(-3px);
-}
-
-/* --- Enhanced Content Section --- */
-.pro-contents {
-    width: 70%;
-    height: 100%;
-    max-height: 100%;
-    overflow-y: auto;
-    padding: 25px;
-    position: relative;
-   
-
-  
-
-}
-
-.pro-contents::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at top right, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        transparent 50%);
-    pointer-events: none;
-}
-
-.p-content {
-    display: none;
-    position: relative;
-    z-index: 2;
-    /* background-color: var(--primary-color); */
-    height: 100%;
-
-}
-
-.p-content.active {
-    display: block;
-    animation: fadeInSlide 0.4s ease forwards;
-}
-
-.p-content p {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8em;
-}
 
 @keyframes fadeInSlide {
     0% {
@@ -1051,184 +1358,6 @@ cat-item:hover .cat-img {
     }
 }
 
-.p-content > a:first-child { 
-    display: flex;
-    align-items: center;
-    padding: 0 0 20px 0;
-    color: #fff;
-    font-weight: bold;
-    border-bottom: 2px dashed rgba(255, 255, 255, 0.4);
-    margin-bottom: 25px; 
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.p-content > a:first-child::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    right: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
-    transition: width 0.4s ease;
-}
-
-.p-content > a:first-child:hover::before {
-    width: 100%;
-}
-
-.p-content > a:first-child:hover {
-    color: rgba(255, 255, 255, 0.9);
-    transform: translateX(-3px);
-}
-
-.p-content > a:first-child:hover span {
-    text-decoration: none;
-}
-
-.p-content > a:first-child span {
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-}
-
-.p-content > a:first-child i {
-    font-size: 0.9em;
-    margin-left: 8px;
-    color: rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
-}
-
-.p-content > a:first-child:hover i {
-    transform: translateX(-2px);
-}
-
-/* --- Sub Menu Sections --- */
-.sub-menus {
-    font-size: 0.95em;
-}
-
-.sub-menu {
-    margin-bottom: 30px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
-
-.sub-menu:hover {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
-.sub-menu:last-child {
-    margin-bottom: 0;
-}
-
-.sub-menu > a { 
-    font-size: 1em;
-    font-weight: bold;
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-    display: inline-block;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.sub-menu > a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    right: 0;
-    width: 0;
-    height: 2px;
-    background: #fff;
-    transition: width 0.3s ease;
-}
-
-.sub-menu > a:hover::after {
-    width: 100%;
-}
-
-.sub-menu > a:hover {
-    color: rgba(255, 255, 255, 0.9);
-    transform: translateX(-2px);
-}
-
-.sub-menu-items {
-    padding: 0;
-}
-
-.s-b-item a {
-    display: block;
-    padding: 12px 8px;
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.95em;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.s-b-item a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.15), 
-        transparent);
-    transition: right 0.4s ease;
-}
-
-.s-b-item a:hover::before {
-    right: 100%;
-}
-
-.s-b-item a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.2);
-    padding-right: 15px;
-    transform: translateX(-3px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Scrollbar Styles */
-.pro-tabs::-webkit-scrollbar,
-.pro-contents::-webkit-scrollbar {
-    width: 6px;
-}
-
-.pro-tabs::-webkit-scrollbar-track,
-.pro-contents::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.pro-tabs::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-}
-
-.pro-contents::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 3px;
-}
-
-.pro-tabs::-webkit-scrollbar-thumb:hover,
-.pro-contents::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.6);
-}
 
 
 /* استایل‌های کلی برای pro-menu */
@@ -1255,29 +1384,51 @@ cat-item:hover .cat-img {
 .mega-menu .pro-menu.slide-out-reverse {
     animation: slideOutToLeft 0.3s ease-in forwards;
 }
+.slide-out-left{
+    animation: slideOutToLeft 0.3s ease-in forwards;
 
-/* انیمیشن‌های keyframe */
-@keyframes slideOutToRight {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
+}
+.mega-menu-container.slide-out-left {
+    animation: slideOutToLeft 0.3s ease-in forwards;
+}
+
+.mega-menu-container.slide-in-left {
+    animation: slideInFromLeft 0.3s ease-out forwards;
+}
+
+.mega-menu-container.slide-in-right {
+    animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+/* افکت ویژه برای تب‌های کلیکی */
+.menu-tab[data-has-sub]:active {
+    transform: translateX(8px) scale(0.98);
 }
 
 @keyframes slideOutToLeft {
     from {
-        transform: translateX(0);
         opacity: 1;
+        transform: translateX(0);
     }
     to {
-        transform: translateX(-100%);
         opacity: 0;
+        transform: translateX(-100%);
     }
 }
+
+/* انیمیشن ورود از چپ (وقتی برمی‌گردیم) */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
 
 /* دکمه بازگشت */
 .submenu-back-btn {
@@ -1411,7 +1562,7 @@ cat-item:hover .cat-img {
     position: absolute;
     left: 15px;
     top: 15px;
-    filter: brightness(0);
+    /* filter: brightness(0); */
  
 }
 .ToolsRight span {
@@ -1440,7 +1591,7 @@ ease 0s;
    
 }
 .ToolsRight:hover img {
-  filter: brightness(100%);
+  filter: grayscale(100%) sepia(100%) saturate(6000%) hue-rotate(-25deg) brightness(0.6) contrast(1.4);
    
 }
 
@@ -1570,7 +1721,7 @@ ease 0s;
   .has-submenu{
     position: relative;
   }
-  .has-submenu::after{
+ .has-submenu::after{
     content: "\f053";
     position: absolute;
     top: 15px;
@@ -1737,19 +1888,13 @@ textarea.form-control {
 /* Responsive */
 @media (max-width: 576px) {
     .consultation-modal {
-        width: calc(100% - 20px);
-        left: -100%;
-        bottom: 10px;
+        width: 100%;
+       
+       
     }
     
-    .consultation-modal.active {
-        left: 10px;
-    }
     
-    .modal-content {
-        padding: 20px;
-        max-height: 90vh;
-    }
+  
 }
 .search-box-wrapper {
     position: absolute;
@@ -1867,6 +2012,89 @@ textarea.form-control {
 .search-submit-btn i {
     font-size: 0.9em;
 }
+/* ===== استایل نقاط کاروسل برند ===== */
+
+/* فعال کردن نمایش dots */
+.brand-owl.owl-carousel {
+    position: relative;
+}
+
+.brand-owl .owl-dots {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 20px;
+    position: absolute;
+    bottom: -12px;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.brand-owl .owl-dot {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.brand-owl .owl-dot span {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--primary-color) !important;
+    transition: all 0.3s ease;
+    margin: 0 5px !important;
+}
+
+/* نقطه فعال (وسطی) */
+.brand-owl .owl-dot.active span {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(185, 28, 28, 0.4);
+}
+
+/* افکت Hover */
+.brand-owl .owl-dot:hover span {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.brand-owl .owl-dot.active:hover span {
+    background-color: var(--primary-color);
+}
+
+/* فضای اضافه برای dots */
+.brand-carousel-sec {
+    padding-bottom: 50px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .brand-owl .owl-dots {
+        bottom: -30px;
+    }
+    
+    .brand-carousel-sec {
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .brand-owl .owl-dot span {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .brand-owl .owl-dot.active span {
+        width: 12px;
+        height: 12px;
+    }
+}
 @media (max-width: 1400px) {
     .logo-sec{
         padding-right: 10px;
@@ -1889,6 +2117,13 @@ textarea.form-control {
     
 }
 @media (max-width: 991px) {
+      .lang{
+            background-color: var(--primary-color);
+    border-radius: 50%;
+    padding: 5px 6px;
+    margin-left:10px;
+    margin-top:0px;
+    }
     .search-box-content {
         padding: 0 20px;
     }
@@ -1903,6 +2138,7 @@ textarea.form-control {
         /* width: 50%; */
         /* margin-right: auto; */
         padding-top: 0px;
+        width: 100px;
     }
     .bar-menu {
         font-size: 1.3em;
@@ -1938,4 +2174,190 @@ textarea.form-control {
     .search-suggestions {
         justify-content: center;
     }
+}
+@media (max-width: 400px) {
+    .cat-img {
+        width: 106px;
+        height: 106px;
+    }
+    .cat-item h1 {
+        font-size: 10px;
+    }
+}
+/* ===== مگامنوی ساده‌شده ===== */
+
+/* کانتینر اصلی */
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    max-width: 95vw;
+    height: 500px;
+    z-index: 1001;
+    background-color: var(--primary-color);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+    border-top: 3px solid var(--primary-color);
+    margin-top: -30px;
+}
+
+.mega-menu.active {
+    display: block;
+}
+
+/* کانتینر منو */
+.mega-menu-container {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.mega-menu-container.active {
+    display: flex;
+    /* animation: slideIn 0.3s ease; */
+}
+
+/* سایدبار */
+.mega-menu-sidebar {
+    width: 70%;
+    background-color: #4a4a4a;
+    height: 100%;
+    overflow-y: auto;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* تب‌ها */
+.menu-tab {
+    padding: 18px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.menu-tab:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(3px);
+}
+
+.menu-tab.active {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    color: var(--primary-color);
+    border-right: 4px solid var(--primary-color);
+    font-weight: bold;
+}
+
+.menu-tab span {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.menu-tab.active span {
+    color: var(--primary-color);
+}
+
+.menu-tab i {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.menu-tab.active i {
+    color: var(--primary-color);
+}
+
+/* دکمه بازگشت */
+.menu-back-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    font-family: iranyekanwebregularfanum;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.menu-back-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(5px);
+}
+
+.menu-back-btn i {
+    margin-left: 10px;
+}
+
+/* محتوا */
+.mega-menu-content {
+    width: 30%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 25px;
+}
+
+.content-item {
+    display: none;
+}
+
+.content-item.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+
+.content-item a {
+    display: flex;
+    align-items: center;
+    padding: 0 0 20px 0;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.4);
+    margin-bottom: 25px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.content-item p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8em;
+}
+
+/* انیمیشن‌ها */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scrollbar */
+.mega-menu-sidebar::-webkit-scrollbar,
+.mega-menu-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mega-menu-sidebar::-webkit-scrollbar-thumb,
+.mega-menu-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
 }

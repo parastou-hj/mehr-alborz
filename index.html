@@ -17,19 +17,25 @@
                 
                 <div class="col-xl-4 col-lg-3 col-6 pt-0 logo-sec pt-lg-2 d-flex ">
                      
-                    <a href="">
-                        <img src="./images/brand-logo.png" alt="">
+                    <a href="" class="d-flex align-items-center">
+                        <img src="./images/logo1.png" alt="">
+                        <img src="./images/logo2.png" alt="">
                     </a>
                 </div>
                 <div class="col-6 d-lg-none d-flex align-items-center justify-content-end">
+ <div class="lang me-3">
+                        <img src="./images/lang.png" alt="" class="lang-img">
+                        
+                    </div>
                     <div class=" bar-menu justify-content-center align-items-center d-lg-none">
                 <i class="fa-solid fa-bars" ></i>
                </div>
+
                 </div>
                 <div class="col-xl-8 col-lg-9 px-0 pt-lg-4"  >
                   <div class="nav-sec px-0 d-flex align-items-center position-relative">
                       <img src="./images/nav-back.png" alt="" class="nav-back">
-                    <ul class="nav pe-xxl-5 position-relative">
+                    <ul class="nav pe-xxl-4 position-relative">
                         <li class="has-megamenu" data-megamenu-target="#all-category">
                             <a href="">محصولات</a>
                         </li>
@@ -60,147 +66,107 @@
 
                     </ul>
                     <img src="./images/search.png" alt="" class="search me-3">
+                    <div class="lang me-3">
+                        <img src="./images/lang.png" alt="" class="lang-img">
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
                  
-<div id="all-category" class="mega-menu">
-    <!-- Pro-Menu اصلی -->
-    <div class="pro-menu px-0">
-        <div class="pro-tabs">
-            <div class="p-tab has-submenu" data-tab="sand-lab" data-submenu="#sand-lab-content">
-                <div><span>تجهیزات آزمایشگاه ماسه</span></div>
-               
+<!-- مگامنوی ساده‌شده با data attributes -->
+<div id="all-category" class="mega-menu" data-level="0">
+    <!-- سطح اول: دسته‌بندی اصلی -->
+    <div class="mega-menu-container" data-menu="main">
+         <div class="mega-menu-content">
+            <div class="content-item" data-content="sand-lab">
+                <a href="#"><span>تجهیزات آزمایشگاه ماسه</span></a>
+                <p>تجهیزات آزمایشگاه ماسه شامل انواع دستگاه‌های تراکم، تعیین دانسیته، و تجهیزات کنترل کیفیت مصالح دانه‌ای است.</p>
             </div>
-
-            <div class="p-tab" data-tab="metallography">
-                <div><span>تجهیزات آزمایشگاه متالوگرافی</span></div>
-               
+            <div class="content-item" data-content="metallography">
+                <a href="#"><span>تجهیزات آزمایشگاه متالوگرافی</span></a>
+                <p>تجهیزات متالوگرافی برای آماده‌سازی، پولیش، و بررسی ریزساختار فلزات به کار می‌روند.</p>
             </div>
-
-            <div class="p-tab" data-tab="grinders">
-                <div><span>آسیاب‌ها و خردکن‌ها</span></div>
-                
+            <div class="content-item" data-content="grinders">
+                <a href="#"><span>آسیاب‌ها و خردکن‌ها</span></a>
+                <p>آسیاب‌ها و خردکن‌ها ابزارهایی برای خردایش و آماده‌سازی نمونه‌های معدنی، سرامیکی و فلزی هستند.</p>
             </div>
-
-            <div class="p-tab" data-tab="ceramic-lab">
-                <div><span>تجهیزات آزمایشگاه سرامیک</span></div>
-               
+            <div class="content-item" data-content="ceramic-lab">
+                <a href="#"><span>تجهیزات آزمایشگاه سرامیک</span></a>
+                <p>این دسته شامل دستگاه‌های شکل‌دهی، پرس پودر، کوره‌های حرارتی، و ابزارهای تست خواص مکانیکی سرامیک‌هاست.</p>
+            </div>
+        </div>
+        <div class="mega-menu-sidebar">
+            <div class="menu-tab" data-target="sand-lab" data-has-sub="true">
+                <span>تجهیزات آزمایشگاه ماسه</span>
+                <i class="fa fa-chevron-left"></i>
+            </div>
+            <div class="menu-tab" data-target="metallography">
+                <span>تجهیزات آزمایشگاه متالوگرافی</span>
+            </div>
+            <div class="menu-tab" data-target="grinders">
+                <span>آسیاب‌ها و خردکن‌ها</span>
+            </div>
+            <div class="menu-tab" data-target="ceramic-lab">
+                <span>تجهیزات آزمایشگاه سرامیک</span>
             </div>
         </div>
 
-        <div class="pro-contents">
-            
-
-           
-            <div class="p-content" id="sand-lab">
-                <a href="#">
-                   
-                    <span>تجهیزات آزمایشگاه ماسه</span>
-                </a>
-                <p>تجهیزات آزمایشگاه ماسه شامل انواع دستگاه‌های تراکم، تعیین دانسیته، و تجهیزات کنترل کیفیت مصالح دانه‌ای است که برای سنجش مقاومت و پایداری نمونه‌ها در آزمایشگاه‌های صنعتی و عمرانی استفاده می‌شوند.</p>
-            </div>
-
-           
-            <div class="p-content" id="metallography">
-                <a href="#">
-                    
-                    <span>تجهیزات آزمایشگاه متالوگرافی</span>
-                </a>
-                <p>تجهیزات متالوگرافی برای آماده‌سازی، پولیش، و بررسی ریزساختار فلزات به کار می‌روند. شامل دستگاه‌های برش، مانت، پولیش، و میکروسکوپ‌های نوری و دیجیتال برای تحلیل دقیق بافت فلزات و آلیاژها می‌باشد.</p>
-            </div>
-
-           
-            <div class="p-content" id="grinders">
-                <a href="#">
-                 
-                    <span>آسیاب‌ها و خردکن‌ها</span>
-                </a>
-                <p>آسیاب‌ها و خردکن‌ها ابزارهایی برای خردایش و آماده‌سازی نمونه‌های معدنی، سرامیکی و فلزی هستند. مدل‌های گلوله‌ای، چکشی و دیسکی با ظرفیت‌های مختلف جهت استفاده در محیط‌های صنعتی و آزمایشگاهی ارائه می‌شوند.</p>
-            </div>
-
-         
-            <div class="p-content" id="ceramic-lab">
-                <a href="#">
-                    
-                    <span>تجهیزات آزمایشگاه سرامیک</span>
-                </a>
-                <p>این دسته شامل دستگاه‌های شکل‌دهی، پرس پودر، کوره‌های حرارتی، و ابزارهای تست خواص مکانیکی سرامیک‌هاست که برای کنترل کیفیت و تحقیق در زمینه مواد پیشرفته سرامیکی به کار می‌روند.</p>
-            </div>
-        </div>
+       
     </div>
 
-    <!--  سطح دوم: ماسه -->
-    <div id="sand-lab-content" class="pro-menu px-0">
-        <div class="pro-tabs">
-            <div class="p-tab has-submenu" data-tab="sand-density" data-submenu="#sand-density-content">
-                <div><span>دستگاه تراکم ماسه</span></div>
-                
+    <!-- سطح دوم: زیرمنوی ماسه -->
+    <div class="mega-menu-container" data-menu="sand-lab">
+         <div class="mega-menu-content">
+            <div class="content-item" data-content="sand-density">
+                <a href="#"><span>دستگاه تراکم ماسه</span></a>
+                <p>دستگاه تراکم ماسه برای تعیین درصد تراکم و چگالی نسبی مصالح دانه‌ای استفاده می‌شود.</p>
             </div>
-
-            <div class="p-tab" data-tab="equipment">
-                <div><span>تجهیزات اندازه‌گیری</span></div>
-                
+            <div class="content-item" data-content="equipment">
+                <a href="#"><span>تجهیزات اندازه‌گیری</span></a>
+                <p>تجهیزات اندازه‌گیری شامل ترازوهای دقیق، الک‌های استاندارد، و وسایل سنجش دانسیته هستند.</p>
             </div>
         </div>
-
-        <div class="pro-contents">
-            <button class="submenu-back-btn">
-                <i class="fa-solid fa-chevron-right"></i>
-                <span>محصولات</span>
+        <div class="mega-menu-sidebar">
+            <button class="menu-back-btn">
+                <i class="fa fa-chevron-right"></i>
+                <span>بازگشت</span>
             </button>
-
-            <div class="p-content" id="sand-density">
-                <a href="#">
-                    
-                    <span>دستگاه‌ تراکم ماسه</span>
-                </a>
-                <p>دستگاه تراکم ماسه برای تعیین درصد تراکم و چگالی نسبی مصالح دانه‌ای استفاده می‌شود. این دستگاه‌ها قابلیت تنظیم ضربه، کنترل نیروی تراکم و ثبت دقیق داده‌ها را دارند.</p>
-            </div>
-
-            <div class="p-content" id="equipment">
-                <a href="#">
-                    
-                    <span>تجهیزات اندازه‌گیری</span>
-                </a>
-                <p>تجهیزات اندازه‌گیری شامل ترازوهای دقیق، الک‌های استاندارد، و وسایل سنجش دانسیته هستند که جهت کنترل کیفیت و دقت آزمایش‌های مکانیکی در بخش ماسه به کار می‌روند.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ✅ سطح سوم: مدل‌های دستگاه تراکم -->
-    <div id="sand-density-content" class="pro-menu px-0">
-        <div class="pro-tabs">
-            <div class="p-tab" data-tab="density-model-a">
-                <div><span>دستگاه تراکم مدل A</span></div>
-                
-            </div>
-
-            <div class="p-tab" data-tab="density-model-b">
-                <div><span>دستگاه تراکم مدل B</span></div>
-               
-            </div>
-        </div>
-
-        <div class="pro-contents">
-            <button class="submenu-back-btn">
-                <i class="fa-solid fa-chevron-right"></i>
+            <div class="menu-tab" data-target="sand-density" data-has-sub="true">
                 <span>دستگاه تراکم ماسه</span>
-            </button>
-
-            <div class="p-content" id="density-model-a">
-                  <a href="#">
-                    
-                    <span>دستگاه تراکم مدل A</span>
-                </a>
-                <p>مدل A از دستگاه‌های تراکم ماسه دارای سیستم دیجیتال، کنترل فشار خودکار و نمایشگر LCD برای ثبت دقیق داده‌هاست. مناسب آزمایشگاه‌های مصالح و کنترل کیفیت.</p>
+                <i class="fa fa-chevron-left"></i>
             </div>
-
-            <div class="p-content" id="density-model-b">
-                  <a href="#">
-                    
-                   <span>دستگاه تراکم مدل B</span>
-                </a>
-                <p>مدل B از نوع مکانیکی با کاربری ساده‌تر است که برای مراکز آموزشی، دانشگاه‌ها و پروژه‌های تحقیقاتی در زمینه ژئوتکنیک و مصالح کاربرد دارد.</p>
+            <div class="menu-tab" data-target="equipment">
+                <span>تجهیزات اندازه‌گیری</span>
             </div>
         </div>
+
+       
+    </div>
+
+    <!-- سطح سوم: مدل‌های دستگاه -->
+    <div class="mega-menu-container" data-menu="sand-density">
+          <div class="mega-menu-content">
+            <div class="content-item" data-content="density-model-a">
+                <a href="#"><span>دستگاه تراکم مدل A</span></a>
+                <p>مدل A دارای سیستم دیجیتال، کنترل فشار خودکار و نمایشگر LCD است.</p>
+            </div>
+            <div class="content-item" data-content="density-model-b">
+                <a href="#"><span>دستگاه تراکم مدل B</span></a>
+                <p>مدل B از نوع مکانیکی با کاربری ساده‌تر برای مراکز آموزشی است.</p>
+            </div>
+        </div>
+        <div class="mega-menu-sidebar">
+            <button class="menu-back-btn">
+                <i class="fa fa-chevron-right"></i>
+                <span>بازگشت</span>
+            </button>
+            <div class="menu-tab" data-target="density-model-a">
+                <span>دستگاه تراکم مدل A</span>
+            </div>
+            <div class="menu-tab" data-target="density-model-b">
+                <span>دستگاه تراکم مدل B</span>
+            </div>
+        </div>
+
+      
     </div>
 </div>
 <div class="search-box-wrapper">
@@ -260,7 +226,7 @@
               <div class="off-canvas-item has-submenu">
                 <a href="#" class="category-btn">
                   <span> محصولات</span>
-                  <i class="fa-solid fa-chevron-left"></i>
+                 
                 </a>
                 <div class="submenu level-1">
                   <div class="submenu-header">
@@ -273,7 +239,7 @@
                     <div class="submenu-item has-submenu">
                       <a href="#" class="subcategory-btn">
                         <span>دسته اول</span>
-                        <i class="fa-solid fa-chevron-left"></i>
+                        
                       </a>
                       <div class="submenu level-2">
                         <div class="submenu-header">
@@ -299,7 +265,7 @@
                     <div class="submenu-item has-submenu">
                       <a href="#" class="subcategory-btn">
                         <span>دسته دوم</span>
-                        <i class="fa-solid fa-chevron-left"></i>
+                        
                       </a>
                       <div class="submenu level-2">
                         <div class="submenu-header">
@@ -334,12 +300,12 @@
               </div>
               <div class="off-canvas-item">
                 <span>درباره ما</span>
-                <i class="fa-solid fa-chevron-left"></i>
+               
               </div>
               
               <div class="off-canvas-item">
                 <span>همکاری با ما</span>
-                <i class="fa-solid fa-chevron-left"></i>
+               
               </div>
               <div class="off-canvas-item">
                 <a href="#"> اخبار و رویدادها</a>
@@ -361,7 +327,7 @@
             <img src="./images/baner-top.png" alt="">
            </div>
         </div>
-        <div class="baner-sec container-fluid px-0 mt-3">
+        <div class="baner-sec container-fluid px-0 mt-lg-3 mt-2">
            <div class="row px-0">
              <div class="owl-carousel owl-theme baner-owl px-0">
                 <div class="baner-item">
@@ -383,7 +349,7 @@
                 <img src="./images/about-back.png" alt="" class="about-back">
                 <h3 class="mb-3">درباره مهندسی صنعت سرام</h3>
                 <h4>تولید کننده تجهیزات صنایع سرامیک و متالوژی</h4>
-                <p class="mt-5">
+                <p class="mt-lg-5 mt-4">
                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
                 </p>
                   <a href="" class="d-flex align-items-center mt-5">
@@ -542,7 +508,7 @@
                 </div>
             </div>
         </div>
-        <div class="blog-sec container-fluid px-0 py-5">
+        <div class="blog-sec container-fluid px-0 py-lg-5 py-4">
             <div class="row col-xl-11">
                 <div class="title-sec d-flex justify-content-between align-items-center">
                     <h3>آخرین مقالات</h3>
@@ -614,68 +580,63 @@
         </div>
         <div class="brands container-fluid my-5">
             <div class="row col-xl-11">
-                <div class="col-md-8   row">
-                    <h3>برخی از مشتریانی که ما افتخار همکاری با آنان را داشته ایم...</h3>
-                  <div class="row px-0 mx-auto brands-items w-100">
-                     <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand1.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand2.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand1.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand3.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand5.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand1.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand5.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                    <div class="col-lg-3 col-sm-4  mb-2 p-2 p-sm-1">
-                     <div class="brand-item">
-                        <a href="">
-                            <img src="./images/brand6.png" alt="">
-                        </a>
-                     </div>
-                   </div>
-                  </div>
+                <div class="col-md-8 ">
+                      <div class="brands-content">
+            <h3>برخی از مشتریانی که ما افتخار همکاری با آنان را داشته ایم...</h3>
+            
+            <!-- گرید برندها -->
+            <div class="brands-items">
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand1.png" alt="برند 1">
+                    </a>
                 </div>
-                <div class="col-md-4 brand-carousel-sec mt-5 mt-lg-0">
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand2.png" alt="برند 2">
+                    </a>
+                </div>
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand1.png" alt="برند 3">
+                    </a>
+                </div>
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand3.png" alt="برند 4">
+                    </a>
+                </div>
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand5.png" alt="برند 5">
+                    </a>
+                </div>
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand1.png" alt="برند 6">
+                    </a>
+                </div>
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand5.png" alt="برند 7">
+                    </a>
+                </div>
+                
+                <div class="brand-item">
+                    <a href="">
+                        <img src="./images/brand6.png" alt="برند 8">
+                    </a>
+                </div>
+            </div>
+        </div>
+                </div>
+                <div class="col-md-4 brand-carousel-sec mt-5 mt-lg-0 ">
                     <div class="brand-carosuel position-relative">
                         <div class="owl-carousel owl-theme brand-owl">
                             <div class="brand-card p-1">
